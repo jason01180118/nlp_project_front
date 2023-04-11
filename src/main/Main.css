@@ -1,0 +1,87 @@
+.container {
+  height: 90%;
+  width: 100%;
+}
+
+.title {
+  margin-top: 2%;
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 5vmin;
+}
+
+.div-href {
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 5%;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.href {
+  font-size: 3vmin;
+}
+.div-content {
+  height: 70%;
+  width: 70%;
+  margin-top: 4%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 30px;
+  border-width: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+textarea {
+  height: 60%;
+  width: 50%;
+}
+
+input {
+  height: 10%;
+  width: 20%;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 2vmin;
+}
+
+input:hover {
+  transform: scale(1.1);
+
+}
+
+.content {
+  font-size: 3vmin;
+}
+
+.div-result {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#result {
+  font-size: 5vmin;
+}

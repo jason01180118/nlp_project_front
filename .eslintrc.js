@@ -1,5 +1,4 @@
 module.exports = {
-  "eslint.autoFixOnSave": true,
   env: {
     browser: true,
     es2021: true,
