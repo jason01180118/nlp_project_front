@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .fontsize-bigtitle{
+    @apply sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl
+  }
+  .fontsize-title {
+    @apply sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl
+  }
+  .fontsize-content {
+    @apply sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl
+  }
+  .fontsize-added {
+    @apply sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
