@@ -6,10 +6,9 @@ import Mode from './Mode';
 
 function App() {
   const [mode, setMode] = useState(0);
-  const modeValue = useMemo(() => ({ mode, setMode }));
   return (
     <div className="absolute w-full h-full">
-      <Mode.Provider value={modeValue}>
+      <Mode.Provider value={{mode, setMode}}>
         <Header />
         <Main />
       </Mode.Provider>

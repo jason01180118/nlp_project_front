@@ -3,8 +3,8 @@ import Mode from '../Mode';
 
 function Header() {
   const { setMode } = useContext(Mode);
-  function changeMode(val) {
-    setMode(val);
+  function changeMode(val: number) {
+    setMode(val)
   }
 
   return (

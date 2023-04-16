@@ -7,7 +7,7 @@ function Main() {
   const [post, setPost] = useState('');
   const [result, setResult] = useState('');
   const [API, setAPI] = useState('');
-  const addPosts = async (sentence) => {
+  const addPosts = async (sentence: string) => {
     await fetch(API, {
       method: 'POST',
       body: JSON.stringify({
@@ -20,28 +20,28 @@ function Main() {
       .then((response) => response.json())
       .then((data) => setResult(data.result))
       .catch((err) => {
-        console.log(err.message);
         setResult(err.message);
       });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     addPosts(post);
   };
 
   useEffect(() => {
+    console.log(mode)
     switch (mode) {
       case 0:
-        setAPI(process.env.REACT_APP_API);
+        setAPI(`${process.env.REACT_APP_API}/banana`);
         setTitle('單分類');
         break;
       case 1:
-        setAPI(process.env.REACT_APP_API);
+        setAPI(process.env.REACT_APP_API!);
         setTitle('多分類');
         break;
       case 2:
-        setAPI(process.env.REACT_APP_API);
+        setAPI(process.env.REACT_APP_API!);
         setTitle('複選分類');
         break;
       default:
@@ -61,7 +61,7 @@ function Main() {
           </div>
 
           <form className="flex flex-col justify-center" onSubmit={handleSubmit}>
-            <textarea className="mb-[2%] border rounded border-gray-300" rows="6" cols="30" name="text" placeholder="example" value={post} onChange={(e) => setPost(e.target.value)} required />
+            <textarea className="mb-[2%] border rounded border-gray-300" rows={6} cols={30} name="text" placeholder="example" value={post} onChange={(e) => setPost(e.target.value)} required />
             <input className="mx-[40%] cursor-pointer fontsize-added border rounded border-gray-300" type="submit" value="Send Request" />
           </form>
         </div>
