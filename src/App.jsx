@@ -13,7 +13,6 @@ function App() {
         <Header />
         <Main />
       </Mode.Provider>
-
     </div>
   );
 }
