@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import Main from './main/Main';
+import { Outlet } from 'react-router-dom';
 import Header from './header/Header';
 import './index.css';
 import Mode from './Mode';
@@ -11,7 +11,7 @@ function App() {
     <div className="absolute w-full h-full">
       <Mode.Provider value={modeValue}>
         <Header />
-        <Main />
+        <Outlet />
       </Mode.Provider>
 
     </div>

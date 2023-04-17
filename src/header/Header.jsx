@@ -1,27 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Mode from '../Mode';
 
 function Header() {
   const { setMode } = useContext(Mode);
+  const [visible, setVisible] = useState(false);
   function changeMode(val) {
     setMode(val);
   }
+  const classes = ['單分類', '多分類', '複選分類'];
+  const hrefs = [
+    { href: 'https://github.com/jason01180118/nlp_project_front', title: 'frontend' },
+    { href: 'http://localhost:3000/', title: 'backend' },
+    { href: 'http://localhost:3000/', title: 'model' },
+  ];
 
   return (
-    <div className="h-[10%] w-full border-b shadow-sm flex justify-between items-center">
-      <div className="w-[50%] ml-[5%] flex justify-evenly">
+    <ul className="h-[10%] w-full border-b shadow-sm flex items-center">
+      <ul className="w-[40%] h-full ml-[5%] flex justify-evenly items-center">
         <p className="fontsize-title">ESG Classify</p>
-        <button className="fontsize-content" type="button" onClick={() => changeMode(0)}>單分類</button>
-        <button className="fontsize-content" type="button" onClick={() => changeMode(1)}>多分類</button>
-        <button className="fontsize-content" type="button" onClick={() => changeMode(2)}>複選分類</button>
-      </div>
-      <div className="w-[35%] ml-[5%] flex justify-evenly">
-        <a className="fontsize-content" href="https://github.com/jason01180118/nlp_project_front" target="_blank" rel="noreferrer">frontend</a>
-        <a className="fontsize-content" href="http://localhost:3000/" target="_blank" rel="noreferrer">backend</a>
-        <a className="fontsize-content" href="http://localhost:3000/" target="_blank" rel="noreferrer">model</a>
-      </div>
+        <ul className="hover:bg-[#FFFFD4] h-full" onMouseEnter={() => { setVisible(true); console.log(123); }} onMouseLeave={() => { setVisible(false); }}>
+          <li className="h-full flex items-center">
+            <p className="fontsize-content">模型展示</p>
+          </li>
+          <ul className="relative bg-[#FFFFD4]" style={{ display: visible ? 'block' : 'none' }}>
+            {classes.map((item, index) => <li key={item} className="border-b-2 border-white"><Link className="fontsize-content" onClick={() => changeMode(index)} to="/">{item}</Link></li>)}
+          </ul>
 
-    </div>
+        </ul>
+        <Link className="fontsize-content" to="/doc">doc</Link>
+      </ul>
+      <ul className="w-[35%] ml-[5%] flex justify-evenly">
+        {hrefs.map((item) => <li key={item.title}><a className="fontsize-content" href={item.href} target="_blank" rel="noreferrer">{item.title}</a></li>)}
+      </ul>
+
+    </ul>
   );
 }
 
