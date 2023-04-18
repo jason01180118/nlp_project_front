@@ -1,6 +1,6 @@
 {
   "name": "nlp-project",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "remark-gfm": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -37,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "eslint": "^8.38.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",

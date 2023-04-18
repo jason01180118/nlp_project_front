@@ -20,11 +20,11 @@ function Header() {
       <ul className="w-[40%] h-full ml-[5%] flex justify-evenly items-center">
         <p className="fontsize-title">ESG Classify</p>
         <ul className="hover:bg-[#FFFFD4] h-full" onMouseEnter={() => { setVisible(true); console.log(123); }} onMouseLeave={() => { setVisible(false); }}>
-          <li className="h-full flex items-center">
+          <li className="h-full flex items-center cursor-pointer">
             <p className="fontsize-content">模型展示</p>
           </li>
-          <ul className="relative bg-[#FFFFD4]" style={{ display: visible ? 'block' : 'none' }}>
-            {classes.map((item, index) => <li key={item} className="border-b-2 border-white"><Link className="fontsize-content" onClick={() => changeMode(index)} to="/">{item}</Link></li>)}
+          <ul className="relative" style={{ display: visible ? 'block' : 'none' }}>
+            {classes.map((item, index) => <li key={item} className="border-b-2 border-white bg-[#FFFFD4]"><Link className="fontsize-content" onClick={() => changeMode(index)} to="/">{item}</Link></li>)}
           </ul>
 
         </ul>
