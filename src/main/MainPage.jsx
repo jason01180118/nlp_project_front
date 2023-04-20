@@ -1,12 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
-import Mode from '../Mode';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import selectJson from '../sent.json';
 
 function Main() {
-  const { mode } = useContext(Mode);
   const [title, setTitle] = useState('');
   const [post, setPost] = useState('');
   const [result, setResult] = useState('');
   const [API, setAPI] = useState('');
+  const [select, setSelect] = useState('');
+  const params = useParams();
   const addPosts = async (sentence) => {
     await fetch(API, {
       method: 'POST',
@@ -30,24 +32,25 @@ function Main() {
     addPosts(post);
   };
 
+  const handleChange = (e) => {
+    setSelect(e.target.value);
+    setPost(e.target.value);
+  };
+
   useEffect(() => {
-    switch (mode) {
-      case 0:
-        setAPI(process.env.REACT_APP_API);
+    switch (params.id) {
+      case '0':
+        setAPI(`${process.env.REACT_APP_API}/banana`);
         setTitle('單分類');
         break;
-      case 1:
-        setAPI(process.env.REACT_APP_API);
-        setTitle('多分類');
-        break;
-      case 2:
+      case '1':
         setAPI(process.env.REACT_APP_API);
         setTitle('複選分類');
         break;
       default:
         break;
     }
-  }, [mode]);
+  }, [params.id]);
 
   return (
     <div className="py-[3%] h-[90%] w-full bg-gray-300 overflow-y-auto">
@@ -61,6 +64,15 @@ function Main() {
           </div>
 
           <form className="flex flex-col justify-center" onSubmit={handleSubmit}>
+            <select className="fontsize-added my-[1%] border-2" value={select} onChange={handleChange}>
+              <option value="none" selected disabled hidden>請選擇選項</option>
+              {selectJson.map((item, index) => (
+                <option key={item} value={item}>
+                  範例
+                  {index}
+                </option>
+              ))}
+            </select>
             <textarea className="mb-[2%] border rounded border-gray-300" rows="6" cols="30" name="text" placeholder="example" value={post} onChange={(e) => setPost(e.target.value)} required />
             <input className="mx-[40%] cursor-pointer fontsize-added border rounded border-gray-300" type="submit" value="Send Request" />
           </form>

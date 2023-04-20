@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 function Doc() {
   const [doc, setDoc] = useState('');
-  const getDoc = async () => {
-    await fetch('https://cors-anywhere.herokuapp.com/https://api.hackmd.io/v1/notes/PjXhTaQaRR-rY7lYs8Hthw', { headers: { Authorization: process.env.REACT_APP_HACKMD_API, 'X-Requested-With': 'XMLHttpRequest' } })
+  const params = useParams();
+
+  const getAuth = () => {
+    switch (params.name) {
+      case 'jason':
+        return process.env.REACT_APP_jason_HACKMD_API;
+      case 'banana':
+        return process.env.REACT_APP_banana_HACKMD_API;
+      case 'gary':
+        return process.env.REACT_APP_gary_HACKMD_API;
+      default:
+        return 0;
+    }
+  };
+
+  useEffect(() => {
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.hackmd.io/v1/notes/${params.id}`, { headers: { Authorization: getAuth(), 'X-Requested-With': 'XMLHttpRequest' } })
       .then((response) => response.json())
       .then((data) => {
         setDoc(data.content);
@@ -13,17 +29,14 @@ function Doc() {
       .catch((err) => {
         setDoc(err.message);
       });
-  };
-  useEffect(() => {
-    getDoc();
-  }, []);
+  }, [params.id]);
 
   useEffect(() => { console.log(doc); }, [doc]);
 
   return (
     <div className="py-[3%] h-[90%] w-full bg-gray-300 overflow-y-auto">
-      <div className="mx-[10%] bg-white rounded-xl flex flex-col">
-        <div className="m-[3%] w-full">
+      <div className="mx-[25%] bg-white rounded-xl flex flex-col">
+        <div className="mx-[15%] my-[5%]">
           <ReactMarkdown className="prose" remarkPlugins={[remarkGfm]}>{doc}</ReactMarkdown>
         </div>
 
