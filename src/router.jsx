@@ -1,5 +1,5 @@
 import {
-  createBrowserRouter,
+  createBrowserRouter, Navigate,
 } from 'react-router-dom';
 import React from 'react';
 import App from './App';
@@ -13,10 +13,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Navigate to="/index/0" />,
+      },
+      {
+        path: '/index/:id',
         element: <Main />,
       },
       {
-        path: 'doc',
+        path: 'doc/:name/:id',
         element: <Doc />,
       },
     ],
