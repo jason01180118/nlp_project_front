@@ -7,7 +7,6 @@ function Main() {
   const [post, setPost] = useState('');
   const [result, setResult] = useState('');
   const [API, setAPI] = useState('');
-  const [select, setSelect] = useState('');
   const params = useParams();
   const addPosts = async (sentence) => {
     await fetch(API, {
@@ -22,7 +21,6 @@ function Main() {
       .then((response) => response.json())
       .then((data) => setResult(data.result))
       .catch((err) => {
-        console.log(err.message);
         setResult(err.message);
       });
   };
@@ -33,7 +31,6 @@ function Main() {
   };
 
   const handleChange = (e) => {
-    setSelect(e.target.value);
     setPost(e.target.value);
   };
 
@@ -64,8 +61,8 @@ function Main() {
           </div>
 
           <form className="flex flex-col justify-center" onSubmit={handleSubmit}>
-            <select className="fontsize-added my-[1%] border-2" value={select} onChange={handleChange}>
-              <option value="none" selected disabled hidden>請選擇選項</option>
+            <select className="fontsize-added my-[1%] border-2" defaultValue="none" onChange={handleChange}>
+              <option value="none" disabled hidden>請選擇選項</option>
               {selectJson.map((item, index) => (
                 <option key={item} value={item}>
                   範例
