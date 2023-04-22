@@ -35,8 +35,8 @@ function Doc() {
 
   return (
     <div className="py-[3%] h-[90%] w-full bg-gray-300 overflow-y-auto">
-      <div className="mx-[25%] bg-white rounded-xl flex flex-col">
-        <div className="mx-[15%] my-[5%]">
+      <div className="mx-[15%] bg-white rounded-xl flex flex-col">
+        <div className="mx-[10%] my-[5%]">
           <ReactMarkdown className="prose" remarkPlugins={[remarkGfm]}>{doc}</ReactMarkdown>
         </div>
 

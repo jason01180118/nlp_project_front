@@ -5,11 +5,12 @@ function Header() {
   const [focus, setFocus] = useState(-1);
   const barList = [
     { title: '模型展示', classes: [{ title: '單分類', to: '/index/0' }, { title: '複選分類', to: '/index/1' }] },
-    { title: 'hackmd doc', classes: [{ title: '資料', to: '/doc/jason/PjXhTaQaRR-rY7lYs8Hthw' }, { title: '單分類模型doc', to: '/doc/banana/T1YsClt_QG23hB_TdZTASg' }, { title: '複選分類模型doc', to: '/doc/gary/L-J88pjeSQy8_2V2F09oBQ' }] },
+    { title: 'hackmd doc', classes: [{ title: '資料&web', to: '/doc/jason/PjXhTaQaRR-rY7lYs8Hthw' }, { title: '單分類模型', to: '/doc/banana/T1YsClt_QG23hB_TdZTASg' }, { title: '複選分類模型', to: '/doc/gary/L-J88pjeSQy8_2V2F09oBQ' }] },
   ];
   const hrefs = [
     { href: 'https://github.com/jason01180118/nlp_project_front', title: 'frontend' },
     { href: 'https://github.com/hapiwangy/prediction_api', title: 'backend' },
+    { href: 'https://github.com/jason01180118/nlp_project_data', title: 'data' },
     { href: 'http://localhost:3000/', title: 'model' },
   ];
 
