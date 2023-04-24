@@ -41,6 +41,10 @@ function Main() {
         setTitle('單分類');
         break;
       case '1':
+        setAPI(`${process.env.REACT_APP_API}/banana2`);
+        setTitle('esg複選分類');
+        break;
+      case '2':
         setAPI(process.env.REACT_APP_API);
         setTitle('複選分類');
         break;
@@ -66,7 +70,7 @@ function Main() {
               {selectJson.map((item, index) => (
                 <option key={item} value={item}>
                   範例
-                  {index}
+                  {index + 1}
                 </option>
               ))}
             </select>
